@@ -19,8 +19,8 @@ dayjs.extend(relativeTime);
 
   data.forEach((classInstance, index) => {
     document.querySelector('#columns-holder').innerHTML += `
-    <div class="col-3">
-      <div class="card">
+    <div class="col-12 col-sm-6 col-xl-3">
+      <div class="card mt-4 mt-xl-0">
         <div class="card-body" id="card-${index}">
           <h5 class="card-title">${classInstance.class_name}</h5>
         </div>
@@ -53,5 +53,6 @@ const determinePriority = (eventDate) => {
   else if (diff >= 7) return 'info';
   else if (diff >= 3) return 'warning';
   else if (diff >= 0) return 'danger';
+  else return 'light';
   
 }
