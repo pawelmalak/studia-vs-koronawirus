@@ -5,7 +5,7 @@ const getClasses = require('./modules/getClasses');
 const getEvents = require('./modules/getEvents');
 
 const app = express();
-const port = process.env.PORT | 3003;
+const port = process.env.PORT || 3000;
 
 app.set('view engine', 'pug');
 app.set('views', './views');
