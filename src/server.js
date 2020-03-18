@@ -20,4 +20,8 @@ app.get('/classes', (req, res) => {
   (async () => res.json(await getClasses()))();
 })
 
+app.get('/test', (req, res) => {
+  res.send('test');
+})
+
 app.listen(port, () => console.log(`Server is working on port ${port}`));
