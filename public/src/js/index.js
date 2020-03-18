@@ -1,31 +1,14 @@
 import 'dayjs/locale/pl';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-
-const getClasses = async () => {
-
-  const req = await fetch('/classes');
-  const res = await req.json();
-  return res;
-
-}
-
-const getEvents = async (classId) => {
-
-  const req = await fetch(`/events?id=${classId}`);
-  const res = await req.json();
-  return res;
-
-}
-
-
+import { determinePriority } from './modules/determinePriority';
+import { getClasses, getEvents } from './modules/getData';
 
 dayjs.locale('pl');
 dayjs.extend(relativeTime);
 
 (async () => {
   const classesArray = await getClasses();
-  console.log(classesArray);
 
   classesArray.forEach(async (classInstance, index) => {
     document.querySelector('#columns-holder').innerHTML += `
@@ -39,7 +22,6 @@ dayjs.extend(relativeTime);
     `;
 
     const eventsArray = await getEvents(classInstance.class_id);
-    console.log(eventsArray);
     
     eventsArray.forEach((eventInstance) => {
       document.querySelector(`#card-${index}`).innerHTML += `
@@ -57,15 +39,3 @@ dayjs.extend(relativeTime);
   });
 
 })();
-
-
-const determinePriority = (eventDate) => {
-  const diff = dayjs(eventDate, 'YYYY-MM-DD HH:mm:ss').diff(dayjs(), 'day');
-  
-  if (diff > 15) return 'success';
-  else if (diff >= 7) return 'info';
-  else if (diff >= 3) return 'warning';
-  else if (diff >= 0) return 'danger';
-  else return 'light';
-  
-}

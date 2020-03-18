@@ -2,7 +2,7 @@ const mysql = require('promise-mysql');
 /**
  * 
  * @brief Connects to the database and returns array of events
- * @param classId - id of class
+ * @param {number:int} classId - id of class
  * @return array of events
  * 
  */
