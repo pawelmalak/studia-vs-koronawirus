@@ -2,7 +2,7 @@ import 'dayjs/locale/pl';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 
-const getData = async () => {
+const getClasses = async () => {
 
   const req = await fetch('/classes');
   const res = await req.json();
@@ -10,14 +10,24 @@ const getData = async () => {
 
 }
 
+const getEvents = async (classId) => {
+
+  const req = await fetch(`/events?id=${classId}`);
+  const res = await req.json();
+  return res;
+
+}
+
+
+
 dayjs.locale('pl');
 dayjs.extend(relativeTime);
 
 (async () => {
-  const data = await getData();
-  console.log(data);
+  const classesArray = await getClasses();
+  console.log(classesArray);
 
-  data.forEach((classInstance, index) => {
+  classesArray.forEach(async (classInstance, index) => {
     document.querySelector('#columns-holder').innerHTML += `
     <div class="col-12 col-sm-6 col-xl-3">
       <div class="card mt-4 mt-xl-0">
@@ -27,14 +37,17 @@ dayjs.extend(relativeTime);
       </div>
     </div>
     `;
+
+    const eventsArray = await getEvents(classInstance.class_id);
+    console.log(eventsArray);
     
-    classInstance.class_events.forEach((eventInstance) => {
+    eventsArray.forEach((eventInstance) => {
       document.querySelector(`#card-${index}`).innerHTML += `
         <div class="col-12 px-0">
           <div class="card mt-3">
             <div class="card-body">
-              <h5 class="card-title">Event <span class="badge badge-${determinePriority(eventInstance.event_deadline)} float-right">${dayjs().to(dayjs(eventInstance.event_deadline, 'YYYY-MM-DD HH:mm:ss'))}</span></h5>
-              <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit, aliquid.</p>
+              <h5 class="card-title">${eventInstance.event_name} <span class="badge badge-${determinePriority(eventInstance.event_deadline)} float-right">${dayjs().to(dayjs(eventInstance.event_deadline, 'YYYY-MM-DD HH:mm:ss'))}</span></h5>
+              <p class="card-text">${eventInstance.event_description}</p>
             </div>
           </div>
         </div>

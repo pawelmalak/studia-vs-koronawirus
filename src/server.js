@@ -2,6 +2,7 @@ const express = require('express');
 require('dotenv').config();
 
 const getClasses = require('./modules/getClasses');
+const getEvents = require('./modules/getEvents');
 
 const app = express();
 const port = process.env.PORT | 3003;
@@ -18,6 +19,10 @@ app.get('/', (req, res) => {
 
 app.get('/classes', (req, res) => {
   (async () => res.json(await getClasses()))();
+})
+
+app.get('/events', (req, res) => {
+  (async () => res.json(await getEvents(req.query.id)))();
 })
 
 app.get('/test', (req, res) => {

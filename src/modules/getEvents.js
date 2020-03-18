@@ -1,12 +1,12 @@
 const mysql = require('promise-mysql');
 /**
  * 
- * @brief Connects to the database and returns array of classes
- * @param -
- * @return array of classes
+ * @brief Connects to the database and returns array of events
+ * @param classId - id of class
+ * @return array of events
  * 
  */
-const getClasses = async () => {
+const getEvents = async (classId) => {
   let connection;
   const config = {
     host: process.env.DB_SERVER,
@@ -18,7 +18,7 @@ const getClasses = async () => {
   try {
 
     connection = await mysql.createConnection(config);
-    const result = await connection.query("SELECT * FROM classes");
+    const result = await connection.query(`SELECT * FROM events WHERE event_class = ${classId}`);
 
     return result;
 
@@ -32,4 +32,4 @@ const getClasses = async () => {
 
 }
 
-module.exports = getClasses;
+module.exports = getEvents;
