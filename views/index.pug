@@ -1,34 +1,22 @@
 html
   head
     title Terminy
-    //- link(rel="stylesheet", href="css/output.css")
     link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
   body
+
   //- navbar start
   nav(class="navbar navbar-expand-lg navbar-dark bg-dark")
     div(class="collapse navbar-collapse" id="navbarNav")
       ul(class="navbar-nav")
         li(class="nav-item active")
           a(class="nav-link" href="https://github.com/pawelmalak/studia-vs-koronawirus" target="blank") v0.6.0
-        li(class="nav-item active")
-          a(class="nav-link ml-2" href="#") Powiadomienia (off / wip)
+        li(class="nav-item")
+          a(class="nav-link ml-2" id="notify" href="#") Powiadomienia (off)
 
   //- content start
   div(class="container-fluid")
     div(class="row pt-4 my-slider" id="columns-holder")
 
-      //- grid start
-      //- div(class="col-3")
-      //-   div(class="card")
-      //-     div(class="card-body")
-      //-       h5(class="card-title") Class
-      //-       div(class="col-12 px-0")
-      //-         div(class="card")
-      //-           div(class="card-body")
-      //-             h5(class="card-title") Event
-      //-               <span class="badge badge-danger float-right">In 2 hours</span>
-      //-             p(class="card-text") Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit, aliquid.
-      //-             a(href="#" class="btn btn-primary") Link
-
-    script(src="/dist/bundle.js")
+  //- scripts
+  script(src="/dist/bundle.js")

@@ -4,7 +4,7 @@ export const getClasses = async () => {
   const res = await req.json();
   return res;
 
-}
+};
 
 export const getEvents = async (classId) => {
 
@@ -12,4 +12,4 @@ export const getEvents = async (classId) => {
   const res = await req.json();
   return res;
 
-}
+};

@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { determinePriority } from './modules/determinePriority';
 import { getClasses, getEvents } from './modules/getData';
+import { requestStateChange } from './modules/notifications';
 
 dayjs.locale('pl');
 dayjs.extend(relativeTime);
@@ -40,3 +41,5 @@ dayjs.extend(relativeTime);
   });
 
 })();
+
+requestStateChange();
