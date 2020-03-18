@@ -14,7 +14,7 @@ app.use(express.static('./public'));
 express.json();
 
 app.get('/', (req, res) => {
-  res.render('index', { title: process.env.TEST });
+  res.render('index');
 });
 
 app.get('/classes', (req, res) => {
@@ -23,10 +23,6 @@ app.get('/classes', (req, res) => {
 
 app.get('/events', (req, res) => {
   (async () => res.json(await getEvents(req.query.id)))();
-})
-
-app.get('/test', (req, res) => {
-  res.send('test');
 })
 
 app.listen(port, () => console.log(`Server is working on port ${port}`));

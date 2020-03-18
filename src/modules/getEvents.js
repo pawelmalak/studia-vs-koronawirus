@@ -18,7 +18,7 @@ const getEvents = async (classId) => {
   try {
 
     connection = await mysql.createConnection(config);
-    const result = await connection.query(`SELECT * FROM events WHERE event_class = ${classId}`);
+    const result = await connection.query(`SELECT * FROM events WHERE event_class = ${classId} AND event_deadline >= CURDATE() ORDER BY event_deadline ASC`);
 
     return result;
 

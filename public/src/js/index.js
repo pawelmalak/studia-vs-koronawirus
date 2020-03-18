@@ -29,6 +29,7 @@ dayjs.extend(relativeTime);
           <div class="card mt-3">
             <div class="card-body">
               <h5 class="card-title">${eventInstance.event_name} <span class="badge badge-${determinePriority(eventInstance.event_deadline)} float-right">${dayjs().to(dayjs(eventInstance.event_deadline, 'YYYY-MM-DD HH:mm:ss'))}</span></h5>
+              <h6 class="card-subtitle mb-2 text-muted">${dayjs(eventInstance.event_deadline).format('DD/MM/YYYY HH:mm')}</h6>
               <p class="card-text">${eventInstance.event_description}</p>
             </div>
           </div>
