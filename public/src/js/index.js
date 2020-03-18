@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { determinePriority } from './modules/determinePriority';
 import { getClasses, getEvents } from './modules/getData';
-import { requestStateChange } from './modules/notifications';
+import { emitNotification } from './modules/notifications';
 
 dayjs.locale('pl');
 dayjs.extend(relativeTime);
@@ -14,7 +14,7 @@ dayjs.extend(relativeTime);
   classesArray.forEach(async (classInstance, index) => {
     document.querySelector('#columns-holder').innerHTML += `
     <div class="col-12 col-sm-6 col-xl-3">
-      <div class="card mt-4 mt-xl-0">
+      <div class="card mt-2 mb-2 my-xl-0">
         <div class="card-body" id="card-${index}">
           <h5 class="card-title">${classInstance.class_name}</h5>
         </div>
@@ -41,5 +41,3 @@ dayjs.extend(relativeTime);
   });
 
 })();
-
-requestStateChange();

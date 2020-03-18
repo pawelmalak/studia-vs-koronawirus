@@ -1,9 +1,27 @@
-export const requestStateChange = () => {
+(() => {
+
   const btn = document.querySelector('#notify');
-  let state = ((/off/).test(btn.textContent)) ? 0 : 1;
+  btn.textContent = `Powiadomienia (${(Notification.permission === 'granted') ? 'on' : 'off'})`;
 
   btn.addEventListener('click', () => {
-    state = !state;
-    console.log(state);
+    if (Notification.permission !== 'granted') {
+      Notification.requestPermission()
+        .then((permission) => {
+          if (permission === 'granted') {
+            emitNotification();
+            btn.textContent = `Powiadomienia (${(Notification.permission === 'granted') ? 'on' : 'off'})`;
+          }
+        });
+    }
   });
+  
+})();
+
+export const emitNotification = (title, desc) => {
+
+  const notification = new Notification('Testowe powiadomienie', {
+    body: 'to tylko test',
+    icon: '/assets/img/approved.png'
+  });
+
 }

@@ -1,13 +1,13 @@
 {
   "name": "studia-vs-koronawirus",
-  "version": "0.6.0",
+  "version": "0.6.5",
   "description": "",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js -e js,pug",
     "webpack-dev": "webpack --mode development --config ./public/webpack.config.js --watch",
-    "build": "webpack --mode production --config ./public/webpack.config.js"
+    "build": "webpack --mode production --config ./public/webpack.config.js --watch"
   },
   "keywords": [],
   "author": "",
