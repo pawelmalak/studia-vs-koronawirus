@@ -5,8 +5,11 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
-  },
-  module: {
+  }
+};
+
+/*
+module: {
     rules: [
       {
         test: /\.js$/,
@@ -17,4 +20,4 @@ module.exports = {
       }
     ]
   }
-};
+*/
