@@ -10,7 +10,6 @@ dayjs.extend(relativeTime);
  * @param {string} eventDate 
  * @returns {string} CSS class name
  */
-
 export const determinePriority = (eventDate) => {
   const diff = dayjs(eventDate, 'YYYY-MM-DD HH:mm:ss').diff(dayjs(), 'day');
   

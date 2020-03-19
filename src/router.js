@@ -1,0 +1,19 @@
+const express = require('express');
+const router = new express.Router();
+
+const getClasses = require('./modules/getClasses');
+const getEvents = require('./modules/getEvents');
+
+router.get('/', (req, res) => {
+  res.render('index');
+});
+
+router.get('/classes', (req, res) => {
+  (async () => res.json(await getClasses()))();
+});
+
+router.get('/events', (req, res) => {
+  (async () => res.json(await getEvents(req.query.id)))();
+});
+
+module.exports = router;

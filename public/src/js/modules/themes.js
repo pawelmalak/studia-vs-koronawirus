@@ -4,11 +4,11 @@ const changeTheme = (lightTheme) => {
 
   if (lightTheme == true) {
     btn.textContent = `Motyw (light)`;
-    link.setAttribute('href', '/css/lightBootstrap.min.css');
+    link.setAttribute('href', '/css/light.min.css');
   }
   else {
     btn.textContent = `Motyw (dark)`;
-    link.setAttribute('href', '/css/darkBootstrap.min.css');
+    link.setAttribute('href', '/css/dark.min.css');
   }
 
   localStorage.setItem('customTheme', 'true');
