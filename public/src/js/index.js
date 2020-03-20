@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { determinePriority } from './modules/determinePriority';
 import { getClasses, getEvents } from './modules/getData';
-import { emitNotification } from './modules/notifications';
+// import { emitNotification } from './modules/notifications';
 import { initTheme } from './modules/themes';
 
 dayjs.locale('pl');
