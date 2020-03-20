@@ -16,4 +16,9 @@ router.get('/events', (req, res) => {
   (async () => res.json(await getEvents(req.query.id)))();
 });
 
+router.post('/notify', (req, res) => {
+  console.log(req.body);
+  res.json({status:'ok'});
+});
+
 module.exports = router;

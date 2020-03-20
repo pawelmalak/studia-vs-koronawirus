@@ -18,7 +18,7 @@ const botRouter = (client, msg) => {
     msgChannel.send(`${msg.content}: brakujący argument\n\nNapisz „${msg.content} --help” dla uzyskania informacji.`)
   }
   // easter egg route
-  else if (/^(su | sudo )/.test(msgContent)) {
+  else if (/^(su | sudo )(deadlines|terminy|dl)/.test(msgContent)) {
     msgChannel.send(`Błąd: ${msg.author} nie występuje w pliku sudoers. Ten incydent zostanie zgłoszony.`)
       .then(msg => console.log('sent msg'))
       .catch(console.error);

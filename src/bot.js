@@ -7,7 +7,6 @@ const notify = require('./modules/botNotify');
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-  // client.user.setUsername('terminowy-bot');
 
   client.user.setPresence({ activity: {
     name: 'in development',
