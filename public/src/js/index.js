@@ -23,7 +23,7 @@ dayjs.extend(relativeTime);
     </div>
     `;
 
-    const eventsArray = await getEvents(classInstance.class_id);
+    const eventsArray = await getEvents(classInstance.class_id, group);
     
     eventsArray.forEach((eventInstance) => {
       document.querySelector(`#card-${index}`).innerHTML += `

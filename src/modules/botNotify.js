@@ -6,13 +6,16 @@ require('dayjs/locale/pl');
 dayjs.locale('pl');
 dayjs.extend(relativeTime);
 
+// #55efc4
+// #ff4757
+
 const bar = {
-  color: '#ff4757',
-  title: 'Termin został zaktualizowany',
-  description: 'powiadomienia(indev)',
-  eventTitle: 'Sprawozdanie',
-  eventDescription: 'Zadanie 2',
-  eventDeadline: '2020-03-31 10:00:00',
+  color: '#55efc4',
+  title: 'Nowy termin został dodany',
+  description: '',
+  eventTitle: 'Zadania - tydzień 2',
+  eventDescription: 'Analiza Matematyczna',
+  eventDeadline: '2020-03-29 23:59:00',
   eventURL: 'https://deadlines-tracker.herokuapp.com'
 };
 
