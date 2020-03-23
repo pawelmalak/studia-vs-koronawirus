@@ -6,7 +6,7 @@ const mysql = require('promise-mysql');
  * @return array of events
  * 
  */
-const getEvents = async (classId, classGroup) => {
+const getEvents = async (classId) => {
   let connection;
   const config = {
     host: process.env.DB_SERVER,
@@ -18,7 +18,7 @@ const getEvents = async (classId, classGroup) => {
   try {
 
     connection = await mysql.createConnection(config);
-    const result = await connection.query(`SELECT * FROM events WHERE event_class = ${classId} AND event_group = ${classGroup} AND event_deadline >= CURDATE() ORDER BY event_deadline ASC`);
+    const result = await connection.query(`SELECT * FROM events WHERE event_class = ${classId} AND event_deadline > NOW() ORDER BY event_deadline ASC`);
 
     return result;
 

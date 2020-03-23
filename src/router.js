@@ -17,7 +17,7 @@ router.get('/classes', (req, res) => {
 });
 
 router.get('/events', (req, res) => {
-  (async () => res.json(await getEvents(req.query.id, req.query.group)))();
+  (async () => res.json(await getEvents(req.query.id)))();
 });
 
 router.post('/notify', (req, res) => {
