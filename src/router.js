@@ -8,10 +8,6 @@ router.get('/', (req, res) => {
   res.render('index');
 });
 
-router.get('/general', (req, res) => {
-  res.render('index', { group: 0 });
-});
-
 router.get('/classes', (req, res) => {
   (async () => res.json(await getClasses()))();
 });

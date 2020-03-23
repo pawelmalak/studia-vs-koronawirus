@@ -21,7 +21,7 @@ const bar = {
 
 const botNotify = (client, data = bar) => {
 
-  const sa = new em()
+  const embem = new em()
     .setColor(data.color)
     .setTitle(data.title)
     .setDescription(data.description)
@@ -34,7 +34,7 @@ const botNotify = (client, data = bar) => {
 
   client.channels.fetch(process.env.BOT_CHANNEL)
     .then(x => {
-      x.send(sa);
+      x.send(embem);
     });
 
 };
