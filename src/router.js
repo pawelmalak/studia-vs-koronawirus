@@ -2,6 +2,7 @@ const express = require('express');
 const router = new express.Router();
 
 const getData = require('./modules/getData');
+const botNotify = require('./modules/botNotify');
 
 router.get('/', (req, res) => {
   res.render('index');
@@ -23,9 +24,8 @@ router.get('/latestadd', (req, res) => {
   (async () => res.json(await getData('added')))();
 });
 
-router.post('/notify', (req, res) => {
-  console.log(req.body);
-  res.json({status:'ok'});
+router.get('/notify', async (req, res) => {
+  res.json(await botNotify(req.query.type, req.query.token));
 });
 
 

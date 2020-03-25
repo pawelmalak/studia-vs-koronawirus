@@ -1,3 +1,7 @@
+const Discord = require('discord.js');
+const client = new Discord.Client();
+require('dotenv').config();
+
 const em = require('discord.js').MessageEmbed;
 const dayjs = require('dayjs');
 const relativeTime = require('dayjs/plugin/relativeTime');
@@ -6,46 +10,38 @@ require('dayjs/locale/pl');
 dayjs.locale('pl');
 dayjs.extend(relativeTime);
 
+const getData = require('./getData');
+
 // #55efc4
 // #ff4757
 
-const foo = {
-  color: '#ff4757',
-  title: 'Termin został zaktualizowany',
-  description: '',
-  eventTitle: 'Ćwiczenie 1',
-  eventDescription: 'Architektura komputerów',
-  eventDeadline: '2020-04-01 10:00:00',
-  eventURL: 'https://deadlines-tracker.herokuapp.com'
-};
+const botNotify = async (type, token) => {
 
-const bar = {
-  color: '#55efc4',
-  title: 'Nowy termin został dodany',
-  description: '',
-  eventTitle: 'Zadania - tydzień 2',
-  eventDescription: 'Analiza Matematyczna',
-  eventDeadline: '2020-03-29 23:59:00',
-  eventURL: 'https://deadlines-tracker.herokuapp.com'
-};
+  // exit if invalid token
+  if (token != process.env.VER_TOKEN) return { code: -1 };
 
-const botNotify = (client, data = foo) => {
+  // exit if invalid operation
+  if (type != 'updated' && type != 'added') return { code: -2 };
+
+  await client.login(process.env.BOT_TOKEN);
+  let eventInstance = (type == 'updated') ? await getData('updated') : await getData('added');
+  eventInstance = eventInstance[0];
 
   const embem = new em()
-    .setColor(data.color)
-    .setTitle(data.title)
-    .setDescription(data.description)
-    .addField('Zadanie', `${data.eventTitle} - ${data.eventDescription}`)
-    .addField('Termin', `
-    ${dayjs(data.eventDeadline).format('DD/MM/YYYY HH:mm')} (${dayjs().to(dayjs(data.eventDeadline, 'YYYY-MM-DD HH:mm:ss'))})
-    `)
-    .addField('Link: ', data.eventURL)
+    .setColor('#ff4757')
+    .setTitle((type == 'updated') ? 'Termin został zaktualizowany' : 'Nowy termin został dodany')
+    .addField('Przedmiot', eventInstance.class_name)
+    .addField('Zadanie', `${eventInstance.event_name} - ${eventInstance.event_description}`)
+    .addField('Termin', `${dayjs(eventInstance.event_deadline).format('DD/MM/YYYY HH:mm')} (${dayjs().to(dayjs(eventInstance.event_deadline, 'YYYY-MM-DD HH:mm:ss'))})`)
+    .addField('Link: ', 'https://deadlines-tracker.herokuapp.com')
     .setTimestamp();
 
   client.channels.fetch(process.env.BOT_CHANNEL)
-    .then(x => {
-      x.send(embem);
+    .then(channel => {
+      channel.send(embem);
     });
+
+  return { code: 0 };
 
 };
 
