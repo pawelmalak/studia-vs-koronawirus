@@ -5,6 +5,7 @@ import { determinePriority } from './modules/determinePriority';
 import { getClasses, getEvents } from './modules/getData';
 // import { emitNotification } from './modules/notifications';
 import { initTheme } from './modules/themes';
+import { tns } from 'tiny-slider/src/tiny-slider'
 
 dayjs.locale('pl');
 dayjs.extend(relativeTime);
@@ -42,5 +43,19 @@ dayjs.extend(relativeTime);
   });
 
   initTheme();
+
+  const slider = tns({
+    container: '.slider',
+    items: classesArray.length,
+    slideBy: 'page',
+    // autoWidth: true,
+    controls: false,
+    nav: false,
+    arrowKeys: true,
+    mouseDrag: true,
+    loop: false,
+    gutter: 10,
+    fixedWidth: 445
+  });
 
 })();

@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+global.client = client;
 require('dotenv').config();
 
 const router = require('./modules/botRouter');
