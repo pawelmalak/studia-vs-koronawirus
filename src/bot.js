@@ -21,4 +21,4 @@ client.on('message', msg => {
   if (/^(deadline|terminy|dl|su|sudo)/.test(msg.content)) router(client, msg);
 });
 
-client.login(process.env.BOT_TOKEN);
+// client.login(process.env.BOT_TOKEN);

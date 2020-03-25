@@ -9,6 +9,16 @@ dayjs.extend(relativeTime);
 // #55efc4
 // #ff4757
 
+const foo = {
+  color: '#ff4757',
+  title: 'Termin został zaktualizowany',
+  description: '',
+  eventTitle: 'Ćwiczenie 1',
+  eventDescription: 'Architektura komputerów',
+  eventDeadline: '2020-04-01 10:00:00',
+  eventURL: 'https://deadlines-tracker.herokuapp.com'
+};
+
 const bar = {
   color: '#55efc4',
   title: 'Nowy termin został dodany',
@@ -19,7 +29,7 @@ const bar = {
   eventURL: 'https://deadlines-tracker.herokuapp.com'
 };
 
-const botNotify = (client, data = bar) => {
+const botNotify = (client, data = foo) => {
 
   const embem = new em()
     .setColor(data.color)

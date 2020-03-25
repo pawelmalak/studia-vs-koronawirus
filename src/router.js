@@ -1,24 +1,32 @@
 const express = require('express');
 const router = new express.Router();
 
-const getClasses = require('./modules/getClasses');
-const getEvents = require('./modules/getEvents');
+const getData = require('./modules/getData');
 
 router.get('/', (req, res) => {
   res.render('index');
 });
 
 router.get('/classes', (req, res) => {
-  (async () => res.json(await getClasses()))();
+  (async () => res.json(await getData('classes')))();
 });
 
 router.get('/events', (req, res) => {
-  (async () => res.json(await getEvents(req.query.id)))();
+  (async () => res.json(await getData('events', { classId: req.query.id })))();
+});
+
+router.get('/latestupdate', (req, res) => {
+  (async () => res.json(await getData('updated')))();
+});
+
+router.get('/latestadd', (req, res) => {
+  (async () => res.json(await getData('added')))();
 });
 
 router.post('/notify', (req, res) => {
   console.log(req.body);
   res.json({status:'ok'});
 });
+
 
 module.exports = router;
