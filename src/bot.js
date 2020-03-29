@@ -10,8 +10,8 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 
   client.user.setPresence({ activity: {
-    name: 'in development',
-    type: 'LISTENING',
+    name: 'development v0.8.0',
+    type: 'PLAYING',
   }, status: 'online' });
 
   // notify(client);

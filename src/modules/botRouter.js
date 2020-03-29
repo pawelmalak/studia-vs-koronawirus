@@ -1,5 +1,8 @@
-const em = require('discord.js').MessageEmbed;
-const addData = require('./addData');
+// Bot modules
+const helpEmbem = require('./botModules/helpEmbem');
+const getUpcoming = require('./botModules/getUpcoming');
+const subscribePrivate = require('./botModules/subscribePrivate');
+const subscribePublic = require('./botModules/subscribePublic');
 
 const botRouter = (client, msg) => {
 
@@ -7,79 +10,24 @@ const botRouter = (client, msg) => {
   const msgChannel = msg.channel;
 
   // help route
-  if (/( -h| --help)$/.test(msgContent)) {
-    const embem = new em()
-      .setColor('#ff4757')
-      .setTitle('Składnia: deadlines [OPCJA]')
-      .addField('Alias: ', 'dl ,terminy')
-      // .addField('\u200B', '\u200B')
-      .addFields(
-        {
-          name: 'Opcja',
-          value: `
-            -h, --help\n
-            -g, --get\n
-            -S\n
-            -s
-          `,
-          inline: true
-        },
-        {
-          name: 'Opis',
-          value: `
-            Wyświetla to okno pomocy\n
-            Wyświetlna najbliższe 3 terminy (indev)\n
-            Zapisuje konto użytkownika do powiadomień w formie wiadomości (indev)\n
-            Zapisuje konto użytkownika do powiadomień w formie @user (indev)
-          `,
-          inline: true
-        },
-      );
+  if (/( -h| --help)$/.test(msgContent)) msgChannel.send(helpEmbem);
 
-    msgChannel.send(embem);
-  }
-  // get route
-  else if (/( -g| --get)/.test(msgContent)) {
-    msgChannel.send('to be implemented')
-  }
-  // test
-  else if (/ -S/.test(msgContent)) {
-    (async () => {
-      await addData('subscribe', {
-        type: 'message',
-        userId: msg.author.id
-      });
-      const x = await client.users.fetch(msg.author.id);
-      x.send('test');
-    })();
-  }
-  // test
-  else if (/ -s/.test(msgContent)) {
-    (async () => {
-      await addData('subscribe', {
-        type: 'mention',
-        userId: msg.author.id
-      });
-      const x = await client.users.fetch(msg.author.id);
-      x.send('test');
-    })();
-  }
-  else if (/ -foo/.test(msgContent)) {
-    (async () => {
-      const x = await client.users.fetch('230376374639001601');
-      x.send('test');
-    })();
-  }
-  // missing argument route
+  // upcoming events route
+  else if (/( -g| --get)/.test(msgContent)) (async () => msgChannel.send(await getUpcoming()))();
+
+  // subscribe routes
+  else if (/ -S/.test(msgContent)) (async () => await subscribePrivate(client, msg))();
+  else if (/ -s/.test(msgContent)) (async () => await subscribePublic(client, msg))();
+
+  // wip
   else if (msgContent == '') {
     msgChannel.send(`${msg.content}: brakujący argument\n\nNapisz „${msg.content} --help” dla uzyskania informacji.`)
   }
-  // easter egg route
-  else if (/^(su | sudo )(deadlines|terminy|dl)/.test(msgContent)) {
-    msgChannel.send(`Błąd: ${msg.author} nie występuje w pliku sudoers. Ten incydent zostanie zgłoszony.`)
-      .then(msg => console.log('sent msg'))
-      .catch(console.error);
-  }
+  // else if (/^(su |sudo )(dl|deadlines|terminy)$/gm.test(msgContent)) {
+  //   msgChannel.send(`Błąd: ${msg.author} nie występuje w pliku sudoers. Ten incydent zostanie zgłoszony.`)
+  //     .then(msg => console.log('sent msg'))
+  //     .catch(console.error);
+  // }
 
 };
 

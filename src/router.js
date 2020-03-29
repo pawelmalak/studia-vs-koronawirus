@@ -5,7 +5,7 @@ const getData = require('./modules/getData');
 const botNotify = require('./modules/botNotify');
 
 router.get('/', (req, res) => {
-  res.render('index');
+  res.render('index', { msg: 'test' });
 });
 
 router.get('/classes', (req, res) => {

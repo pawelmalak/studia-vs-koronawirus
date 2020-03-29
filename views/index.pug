@@ -1,42 +1,22 @@
+doctype html
 html(lang="pl")
   head
     title Terminy
-    link(rel="stylesheet" href="/css/light.min.css" id="style-link")
-    link(rel="stylesheet", href="/css/style.css")
-    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/tiny-slider.css")
-    meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    link(rel="apple-touch-icon" sizes="57x57" href="/assets/favicons/apple-icon-57x57.png")
-    link(rel="apple-touch-icon" sizes="60x60" href="/assets/favicons/apple-icon-60x60.png")
-    link(rel="apple-touch-icon" sizes="72x72" href="/assets/favicons/apple-icon-72x72.png")
-    link(rel="apple-touch-icon" sizes="76x76" href="/assets/favicons/apple-icon-76x76.png")
-    link(rel="apple-touch-icon" sizes="114x114" href="/assets/favicons/apple-icon-114x114.png")
-    link(rel="apple-touch-icon" sizes="120x120" href="/assets/favicons/apple-icon-120x120.png")
-    link(rel="apple-touch-icon" sizes="144x144" href="/assets/favicons/apple-icon-144x144.png")
-    link(rel="apple-touch-icon" sizes="152x152" href="/assets/favicons/apple-icon-152x152.png")
-    link(rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-icon-180x180.png")
-    link(rel="icon" type="image/png" sizes="192x192"  href="/assets/favicons/android-icon-192x192.png")
-    link(rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png")
-    link(rel="icon" type="image/png" sizes="96x96" href="/assets/favicons/favicon-96x96.png")
-    link(rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png")
-    link(rel="shortcut icon" type="image/png" href="/assets/favicons/favicon.ico")
-    script.
-      var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(101242744);
-    script(async src="//static.getclicky.com/js")
+    include includes/head
   body
-
   //- navbar start
   nav(class="navbar navbar-expand-lg navbar-dark bg-dark")
     div(class="collapse navbar-collapse" id="navbarNav")
       ul(class="navbar-nav")
         li(class="nav-item active")
-          a(class="nav-link" href="https://github.com/pawelmalak/studia-vs-koronawirus" target="blank") v0.7.9
+          a(class="nav-link" href="https://github.com/pawelmalak/studia-vs-koronawirus" target="blank") v0.8.0
         li(class="nav-item")
           a(class="nav-link ml-2" id="theme" href="#") Motyw (light)
 
   //- content start
   div(class="container-fluid position-relative")
     div(class="pt-4 slider noselect" id="columns-holder")
-    p(class="text-center text-help mt-5") Przesuń lub użyj strzałek aby poruszać się między kolumnami
+    p(class="text-center text-help mt-5") Przeciągnij lub użyj strzałek aby poruszać się między kolumnami
 
   //- scripts
   script(src="/dist/bundle.js")

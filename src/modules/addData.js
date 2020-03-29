@@ -15,9 +15,7 @@ const addData = async (mode, data = {}) => {
     connection = await mysql.createConnection(config);
     let result;
 
-    console.log(`INSERT INTO subscribers(subscriber_discord_id, subscriber_subscription_type) VALUES(${data.userId}, ${(data.type == 'message') ? 10 : 20})`);
     result = await connection.query(`INSERT INTO subscribers(subscriber_discord_id, subscriber_subscription_type) VALUES(${data.userId}, ${(data.type == 'message') ? 10 : 20})`);
-    // result = await connection.query(`INSERT INTO subscribers(subscriber_discord_id, subscriber_subscription_type) VALUES(${data.userId}, 2)`);
     console.log(await result);
     return { code: 0 };
 
