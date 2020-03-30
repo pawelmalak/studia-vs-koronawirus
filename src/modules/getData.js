@@ -15,7 +15,7 @@ const getData = async (mode, params = {}) => {
     connection = await mysql.createConnection(config);
     let result;
 
-    if (mode == 'classes')result = await connection.query(`
+    if (mode == 'classes') result = await connection.query(`
       SELECT *
         FROM classes
       WHERE class_active = 1

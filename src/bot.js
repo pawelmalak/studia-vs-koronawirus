@@ -4,17 +4,14 @@ global.client = client;
 require('dotenv').config();
 
 const router = require('./modules/botRouter');
-const notify = require('./modules/botNotify');
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 
   client.user.setPresence({ activity: {
-    name: 'development v0.8.0',
+    name: 'development v0.8.1',
     type: 'PLAYING',
   }, status: 'online' });
-
-  // notify(client);
 });
  
 client.on('message', msg => {

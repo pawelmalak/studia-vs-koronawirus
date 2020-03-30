@@ -1,7 +1,11 @@
 const express = require('express');
 const router = new express.Router();
 
+const requestIp = require('request-ip');
+
 const getData = require('./modules/getData');
+const addData = require('./modules/addData');
+const getUserDetails = require('./modules/getUserDetails');
 const botNotify = require('./modules/botNotify');
 
 router.get('/', (req, res) => {
@@ -26,6 +30,14 @@ router.get('/latestadd', (req, res) => {
 
 router.get('/notify', async (req, res) => {
   res.json(await botNotify(req.query.type, req.query.token));
+});
+
+router.get('/track', async (req, res) => {
+  const userDetails = await getUserDetails(req.clientIp, req.query.theme);
+  console.log(userDetails);
+  const result = await addData('track', userDetails);
+  console.log(result);
+  res.json(userDetails);
 });
 
 

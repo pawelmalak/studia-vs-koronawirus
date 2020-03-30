@@ -29,7 +29,7 @@ const checkThemeLive = () => {
  * @param - 
  * @returns {boolean} true if light theme is saved, false if dark theme is saved
  */
-const checkThemeLocal = () => {
+export const checkThemeLocal = () => {
   if (localStorage.getItem('lightTheme')) return (localStorage.getItem('lightTheme') == 'true') ? true : false;
 }
 

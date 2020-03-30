@@ -22,3 +22,7 @@
 .text-center {
   text-align: center;
 }
+
+.hidden-demo {
+  border-color: coral;
+}
