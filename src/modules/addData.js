@@ -37,18 +37,34 @@ const addData = async (mode, data = {}) => {
           visit_location_y,
           visit_location_name,
           visit_location_country,
-          visit_theme
+          visit_theme,
+          visit_screen_width,
+          visit_screen_height,
+          visit_browser_name,
+          visit_browser_version,
+          visit_engine_name,
+          visit_engine_version,
+          visit_os_name,
+          visit_os_version
         )
       VALUES
         (
           '${data.visit_ip}',
           '${data.visit_isp}',
           '${data.visit_isp_name}',
-          ${data.visit_location_x},
-          ${data.visit_location_y}, 
+           ${data.visit_location_x},
+           ${data.visit_location_y}, 
           '${data.visit_location_name}',
           '${data.visit_location_country}',
-          ${data.visit_theme}
+           ${data.visit_theme},
+           ${data.visit_screen_width},
+           ${data.visit_screen_height},
+          '${data.visit_browser_name}',
+          '${data.visit_browser_version}',
+          '${data.visit_engine_name}',
+          '${data.visit_engine_version}',
+          '${data.visit_os_name}',
+           ${data.visit_os_version}
         )`
     );
 

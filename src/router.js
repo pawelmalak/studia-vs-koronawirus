@@ -1,7 +1,7 @@
 const express = require('express');
 const router = new express.Router();
 
-const requestIp = require('request-ip');
+
 
 const getData = require('./modules/getData');
 const addData = require('./modules/addData');
@@ -33,12 +33,11 @@ router.get('/notify', async (req, res) => {
 });
 
 router.get('/track', async (req, res) => {
-  const userDetails = await getUserDetails(req.clientIp, req.query.theme);
+  const userDetails = await getUserDetails(req.clientIp, req.query, req.headers['user-agent']);
   console.log(userDetails);
   const result = await addData('track', userDetails);
   console.log(result);
   res.json(userDetails);
 });
-
 
 module.exports = router;

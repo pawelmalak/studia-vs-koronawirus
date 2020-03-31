@@ -9,7 +9,7 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 
   client.user.setPresence({ activity: {
-    name: 'development v0.8.1',
+    name: 'development v0.8.2',
     type: 'PLAYING',
   }, status: 'online' });
 });

@@ -781,7 +781,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"tracker\", function() { return tracker; });\n/* harmony import */ var _themes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./themes */ \"./public/src/js/modules/themes.js\");\n\r\n\r\nconst tracker = async () => {\r\n\r\n  const req = await fetch(`/track?theme=${(Object(_themes__WEBPACK_IMPORTED_MODULE_0__[\"checkThemeLocal\"])()) ? 1 : 0}`);\r\n  const res = await req.json();\r\n  return res;\r\n\r\n}\n\n//# sourceURL=webpack:///./public/src/js/modules/tracker.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"tracker\", function() { return tracker; });\n/* harmony import */ var _themes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./themes */ \"./public/src/js/modules/themes.js\");\n\r\n\r\nconst tracker = async () => {\r\n\r\n  const req = await fetch(`/track?theme=${(Object(_themes__WEBPACK_IMPORTED_MODULE_0__[\"checkThemeLocal\"])()) ? 1 : 0}&width=${screen.width}&height=${screen.height}`);\r\n  const res = await req.json();\r\n  return res;\r\n\r\n}\n\n//# sourceURL=webpack:///./public/src/js/modules/tracker.js?");
 
 /***/ })
 
