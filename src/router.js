@@ -1,8 +1,6 @@
 const express = require('express');
 const router = new express.Router();
 
-
-
 const getData = require('./modules/getData');
 const addData = require('./modules/addData');
 const getUserDetails = require('./modules/getUserDetails');
@@ -30,6 +28,14 @@ router.get('/latestadd', (req, res) => {
 
 router.get('/notify', async (req, res) => {
   res.json(await botNotify(req.query.type, req.query.token));
+});
+
+router.get('/visits', async (req, res) => {
+  (async () => res.json(await getData('visits')))();
+});
+
+router.get('/visitsbyip', async (req, res) => {
+  (async () => res.json(await getData('visitsbyip')))();
 });
 
 router.get('/track', async (req, res) => {

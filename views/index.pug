@@ -9,14 +9,16 @@ html(lang="pl")
     div(class="collapse navbar-collapse" id="navbarNav")
       ul(class="navbar-nav")
         li(class="nav-item active")
-          a(class="nav-link" href="https://github.com/pawelmalak/studia-vs-koronawirus" target="blank") v0.8.2
+          a(class="nav-link" href="https://github.com/pawelmalak/studia-vs-koronawirus" target="blank") v0.8.3
+        //- li(class="nav-item")
+        //-   a(class="nav-link ml-2" id="theme" href="#") Motyw (light)
         li(class="nav-item")
-          a(class="nav-link ml-2" id="theme" href="#") Motyw (light)
+          a(class="nav-link ml-2" id="finished" href="#") Ukończone (hidden//wip//0)
 
   //- content start
   div(class="container-fluid position-relative")
     div(class="pt-4 slider noselect" id="columns-holder")
-    p(class="text-center text-help mt-5") Przeciągnij lub użyj strzałek aby poruszać się między kolumnami
+    p(class="text-center text-help fixed-pos") Przeciągnij lub użyj strzałek aby poruszać się między kolumnami
 
   //- scripts
   script(src="/dist/bundle.js")

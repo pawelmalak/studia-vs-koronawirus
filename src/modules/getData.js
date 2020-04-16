@@ -60,6 +60,19 @@ const getData = async (mode, params = {}) => {
       SELECT *
         FROM subscribers
     `);
+    else if (mode == 'visits') result = await connection.query(`
+      SELECT *
+        FROM visits
+        ORDER BY visit_id DESC
+        LIMIT 20
+    `);
+    else if (mode == 'visitsbyip') result = await connection.query(`
+      SELECT COUNT(visit_ip) AS visit_count, visit_ip, visit_isp, visit_isp_name
+        FROM visits
+        GROUP BY visit_ip
+        ORDER BY visit_count DESC
+        LIMIT 10
+    `);
 
     return result;
 

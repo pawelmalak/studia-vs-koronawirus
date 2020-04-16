@@ -27,22 +27,30 @@ export const populatePage = async () => {
 
     const eventsArray = await getEvents(class_id);
     
-    eventsArray.forEach(({ event_id, event_name, event_description, event_deadline }) => {
+    if (eventsArray.length > 0) {
+      eventsArray.forEach(({ event_id, event_name, event_description, event_deadline }) => {
 
-      const hash = md5(`${class_id}${event_id}${event_name}`);
-
-      document.querySelector(`#card-${index}`).innerHTML += `
-        <div class="card mt-3 js-event-card" data-hash="${hash}">
-          <div class="card-body">
-            <h5 class="card-title">${event_name} <span class="badge badge-${determinePriority(event_deadline)} float-right">${dayjs().to(dayjs(event_deadline, 'YYYY-MM-DD HH:mm:ss'))}</span></h5>
-            <h6 class="card-subtitle mb-2 text-muted">${dayjs(event_deadline).format('DD/MM/YYYY HH:mm')}</h6>
-            <p class="card-text">${event_description}</p>
+        const hash = md5(`${class_id}${event_id}${event_name}`);
+  
+        document.querySelector(`#card-${index}`).innerHTML += `
+          <div class="card mt-3 js-event-card" data-hash="${hash}">
+            <div class="card-body">
+              <h5 class="card-title">${event_name} <span class="badge badge-${determinePriority(event_deadline)} float-right">${dayjs().to(dayjs(event_deadline, 'YYYY-MM-DD HH:mm:ss'))}</span></h5>
+              <h6 class="card-subtitle mb-2 text-muted">${dayjs(event_deadline).format('DD/MM/YYYY HH:mm')}</h6>
+              <p class="card-text">${event_description}</p>
+            </div>
           </div>
-        </div>
+        `;
+  
+      });
+    }
+    else {
+      document.querySelector(`#card-${index}`).innerHTML += `
+        <p class="text-muted mt-5 text-center">
+          Wszystkie zadania zostały oznaczone jako ukończone lub nie ma nadchodzących terminów
+        </p>
       `;
-
-    });
-
+    }
   });
 
   initSlider(classesArray.length);

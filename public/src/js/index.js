@@ -5,6 +5,6 @@ import { tracker } from './modules/tracker';
 
 (async () => {
   populatePage();
-  initTheme();
+  // initTheme();
   await tracker();
 })();
